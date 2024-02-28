@@ -4,7 +4,7 @@ import '../presentation/home_screen.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../skeleton/presentation/main_screen.dart';
+import '../presentation/main_screen.dart';
 part 'router.g.dart';
 
 @riverpod

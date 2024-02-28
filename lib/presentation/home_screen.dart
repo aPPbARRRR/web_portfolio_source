@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:web_portfolio/components/side_menu_bar/side_menu_item.dart';
 import 'package:web_portfolio/components/side_menu_bar/side_menu_bar_controller.dart';
 
@@ -28,22 +29,39 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 100,
           innerPadding: EdgeInsets.fromLTRB(5, 5, 2, 5),
           outerPadding: EdgeInsets.fromLTRB(30, 30, 2, 10),
+          color: Color.fromARGB(193, 1, 83, 150),
+          fontFamily: GoogleFonts.ibmPlexSansKr().fontFamily,
           menuItems: [
             SideMenuItem(title: 'Intro'),
             SideMenuItem(title: 'Projects', subMenuList: [
               SideMenuItem(title: '불꽃놀이', subMenuList: [
                 SideMenuItem(title: 'intro'), // 어떤 앱? 앱의 기능
-                SideMenuItem(
-                    title:
-                        'architecture &&&&ADfasfaffasdffaajg09eja0g9iewn0ghewiang0ahe9waifghawe0ighwea0ifgha0iewohf'),
+                SideMenuItem(title: 'architecture'),
                 SideMenuItem(title: '상태 관리'),
                 SideMenuItem(title: '사용 라이브러리'),
                 SideMenuItem(title: '이슈'),
               ]),
-              SideMenuItem(title: '당신의숲'),
-              SideMenuItem(title: '냠냠베어'),
-              SideMenuItem(title: '커피랭커'),
-              SideMenuItem(title: '커피랭커')
+              SideMenuItem(title: '당신의숲', subMenuList: [
+                SideMenuItem(title: 'intro'), // 어떤 앱? 앱의 기능
+                SideMenuItem(title: 'architecture'),
+                SideMenuItem(title: '상태 관리'),
+                SideMenuItem(title: '사용 라이브러리'),
+                SideMenuItem(title: '이슈'),
+              ]),
+              SideMenuItem(title: '냠냠베어', subMenuList: [
+                SideMenuItem(title: 'intro'), // 어떤 앱? 앱의 기능
+                SideMenuItem(title: 'architecture'),
+                SideMenuItem(title: '상태 관리'),
+                SideMenuItem(title: '사용 라이브러리'),
+                SideMenuItem(title: '이슈'),
+              ]),
+              SideMenuItem(title: '커피랭커', subMenuList: [
+                SideMenuItem(title: 'intro'), // 어떤 앱? 앱의 기능
+                SideMenuItem(title: 'architecture'),
+                SideMenuItem(title: '상태 관리'),
+                SideMenuItem(title: '사용 라이브러리'),
+                SideMenuItem(title: '이슈'),
+              ]),
             ]),
             SideMenuItem(title: 'Contact'),
           ],
