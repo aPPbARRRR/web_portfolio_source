@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:web_portfolio/web/presentation/common/components/nested_side_menu.dart/nested_side_menu_bar.dart';
 import 'package:web_portfolio/web/presentation/common/components/nested_side_menu.dart/nested_side_menu_body.dart';
 import 'package:web_portfolio/web/presentation/common/components/nested_side_menu.dart/nested_side_menu_controller.dart';
