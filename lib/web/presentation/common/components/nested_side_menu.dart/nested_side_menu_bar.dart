@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:web_portfolio/web/presentation/common/components/nested_side_menu.dart/nested_side_menu_controller.dart';
-import 'package:web_portfolio/web/presentation/common/components/side_menu_bar/side_menu_item.dart';
+
+import 'side_menu_item.dart';
 
 class NestedSideMenuBar extends StatefulWidget {
   const NestedSideMenuBar({
@@ -34,7 +37,7 @@ class _NestedSideMenuBarState extends State<NestedSideMenuBar> {
   double? _height;
 
   void rebuildView() {
-    if (context.mounted) {
+    if (context.mounted && !context.debugDoingBuild) {
       setState(() {});
     }
   }
@@ -42,8 +45,12 @@ class _NestedSideMenuBarState extends State<NestedSideMenuBar> {
   @override
   void initState() {
     if (widget.initialIndex != null) {
-      widget.controller
-          .changeSelectedIndexes(widget.menuBarDepth, widget.initialIndex!);
+      widget.controller.changeSelectedIndexes(
+          menuBarDepth: widget.menuBarDepth,
+          index: widget.initialIndex!,
+          isSubmenuExist: widget.menuItems[widget.initialIndex!].subMenuList !=
+                  null &&
+              widget.menuItems[widget.initialIndex!].subMenuList!.isNotEmpty);
     }
     widget.controller.addListener(rebuildView);
 
@@ -52,9 +59,6 @@ class _NestedSideMenuBarState extends State<NestedSideMenuBar> {
 
   @override
   void dispose() {
-    if (widget.menuBarDepth == 0) {
-      widget.controller.dispose();
-    }
     widget.controller.removeListener(rebuildView);
     super.dispose();
   }
@@ -93,7 +97,7 @@ class _NestedSideMenuBarState extends State<NestedSideMenuBar> {
                               fontFamily: widget.fontFamily,
                               fontWeight: isSelected ? FontWeight.bold : null,
                               color: isSelected ? Colors.white : Colors.grey,
-                              overflow: TextOverflow.fade,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -101,16 +105,15 @@ class _NestedSideMenuBarState extends State<NestedSideMenuBar> {
                                 InkWell(
                                   onTap: () {
                                     widget.controller.changeSelectedIndexes(
-                                        widget.menuBarDepth,
-                                        widget.menuItems.indexOf(item));
-                                    if (item.subMenuList != null) {
-                                      widget.controller.changeSelectedIndexes(
-                                          widget.menuBarDepth + 1, null);
-                                    }
+                                        menuBarDepth: widget.menuBarDepth,
+                                        index: widget.menuItems.indexOf(item),
+                                        isSubmenuExist:
+                                            item.subMenuList != null &&
+                                                item.subMenuList!.isNotEmpty);
                                   },
                                   child: Text(
                                     item.title,
-                                    maxLines: 3,
+                                    maxLines: 1,
                                   ),
                                 ),
                                 if (item.subMenuList != null && isSelected)
